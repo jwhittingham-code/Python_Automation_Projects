@@ -2,15 +2,16 @@ import os, re
 
 path = './FileSystem/files'
 
-print(os.listdir(path))
-#os.rename('./FileSystem/files/file1.txt','./FileSystem/files/file_1.txt')
+#Print list of current files
+print("Current files: ", os.listdir(path))
+
 
 for file in os.listdir(path):
     number = re.findall("[0-9]+",file)[0]
     filetype = file.rsplit(".")[1]
     name = file.rsplit(number[0])[0]
     newfilepath = f'{path}/{name}_{number}.{filetype}'
-    print(newfilepath)
+    
     os.rename(f'{path}/{file}', newfilepath)
 
-print(os.listdir(path))
+print("Renamed files: ", os.listdir(path))
